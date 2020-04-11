@@ -23,7 +23,11 @@ namespace :puma do
         else
           within current_path do
             with rack_env: fetch(:puma_env) do
-              execute :puma, "-C #{fetch(:puma_conf)} --daemon"
+              if fetch(:puma_start_task)
+                invoke fetch(:puma_start_task)
+              else
+                execute :puma, "-C #{fetch(:puma_conf)} --daemon"
+              end
             end
           end
         end

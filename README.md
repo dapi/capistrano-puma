@@ -138,6 +138,7 @@ Configurable options, shown here with defaults: Please note the configuration op
     set :puma_tag, fetch(:application)
     set :puma_restart_command, 'bundle exec puma'
     set :puma_extra_settings, ''
+    set :puma_start_task, nil # Invoke alternate capistrano task to start puma
 
     set :nginx_config_name, "#{fetch(:application)}_#{fetch(:stage)}"
     set :nginx_flags, 'fail_timeout=0'
